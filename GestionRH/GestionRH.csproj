@@ -47,6 +47,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AspNet.TelemetryCorrelation, Version=1.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.TelemetryCorrelation.1.0.5\lib\net45\Microsoft.AspNet.TelemetryCorrelation.dll</HintPath>
     </Reference>
@@ -121,8 +127,51 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\Mantenimiento_CargoController.cs" />
+    <Compile Include="Controllers\Mantenimiento_DepartamentoController.cs" />
+    <Compile Include="Controllers\Mantenimiento_EmpleadoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MaitenanceModule.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MaitenanceModule.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MaitenanceModule.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MaitenanceModule.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MaitenanceModule.Designer.cs" />
+    <Compile Include="Models\MaitenanceModule1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MaitenanceModule.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mantenimiento_Cargo.cs">
+      <DependentUpon>MaitenanceModule.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mantenimiento_Departamento.cs">
+      <DependentUpon>MaitenanceModule.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mantenimiento_Empleado.cs">
+      <DependentUpon>MaitenanceModule.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Process_licencias.cs">
+      <DependentUpon>MaitenanceModule.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Process_nominas.cs">
+      <DependentUpon>MaitenanceModule.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Process_Permisos.cs">
+      <DependentUpon>MaitenanceModule.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Process_salida_empleado.cs">
+      <DependentUpon>MaitenanceModule.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Process_Vacaciones.cs">
+      <DependentUpon>MaitenanceModule.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -136,6 +185,17 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\MaitenanceModule.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>MaitenanceModule.Context.cs</LastGenOutput>
+      <DependentUpon>MaitenanceModule.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\MaitenanceModule.edmx.sql" />
+    <Content Include="Models\MaitenanceModule.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>MaitenanceModule.cs</LastGenOutput>
+      <DependentUpon>MaitenanceModule.edmx</DependentUpon>
+    </Content>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -158,6 +218,13 @@
     <Content Include="Scripts\esm\popper.js.map" />
     <Content Include="Scripts\esm\popper-utils.min.js.map" />
     <Content Include="Scripts\esm\popper-utils.js.map" />
+    <EntityDeploy Include="Models\MaitenanceModule.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>MaitenanceModule1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\MaitenanceModule.edmx.diagram">
+      <DependentUpon>MaitenanceModule.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -200,10 +267,24 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\Mantenimiento_Empleado\Create.cshtml" />
+    <Content Include="Views\Mantenimiento_Empleado\Delete.cshtml" />
+    <Content Include="Views\Mantenimiento_Empleado\Details.cshtml" />
+    <Content Include="Views\Mantenimiento_Empleado\Edit.cshtml" />
+    <Content Include="Views\Mantenimiento_Empleado\Index.cshtml" />
+    <Content Include="Views\Mantenimiento_Departamento\Create.cshtml" />
+    <Content Include="Views\Mantenimiento_Departamento\Delete.cshtml" />
+    <Content Include="Views\Mantenimiento_Departamento\Details.cshtml" />
+    <Content Include="Views\Mantenimiento_Departamento\Edit.cshtml" />
+    <Content Include="Views\Mantenimiento_Departamento\Index.cshtml" />
+    <Content Include="Views\Mantenimiento_Cargo\Create.cshtml" />
+    <Content Include="Views\Mantenimiento_Cargo\Delete.cshtml" />
+    <Content Include="Views\Mantenimiento_Cargo\Details.cshtml" />
+    <Content Include="Views\Mantenimiento_Cargo\Edit.cshtml" />
+    <Content Include="Views\Mantenimiento_Cargo\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -212,6 +293,7 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
